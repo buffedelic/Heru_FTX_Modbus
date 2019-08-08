@@ -73,18 +73,6 @@ def RCtime (pin=10):
 	return reading
 
 if __name__ == '__main__':
-	# buff = "191.168.1.69" #example
-	# while os.system("ping -n 1 " + buff) == 0: #buff hemma
-	# 	if read_status(3) == 0:
-	# 	    print(hostname, 'is up!')
-	# 		pass
-	# 	elif read_status(3) == 1:
-	# 	    print(hostname, 'is down!')
-
-	# 		switched_status(read_status(3))
-	# 		pass
-	# else: 
-	# 	pass  
 
 	# Average light sensed from alarm panel.
 	home = 20000 # > 50000
