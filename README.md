@@ -1,6 +1,6 @@
 # Heru_FTX_Modbus
 
-Example putput:
+Example output:
 
 ---------------
 | Coil Status |
