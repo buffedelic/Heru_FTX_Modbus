@@ -6,9 +6,9 @@ Used in conjunction with a RPI to monitor Östberg Heru FTX with enabled modbus.
 
 ### Requirements
 
-Modbus enabled remote for your Heru
-minimalmodbus
-rrdTool _or your flavor of database_
+* Modbus enabled remote for your Heru
+* minimalmodbus
+* rrdTool _or your flavor of database_
 
 ### Usage
 
