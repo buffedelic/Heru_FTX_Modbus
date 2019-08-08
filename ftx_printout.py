@@ -14,6 +14,8 @@ class HeruFTX( minimalmodbus.Instrument ):
     def __init__(self, portname, slaveaddress):
         minimalmodbus.Instrument.__init__(self, portname, slaveaddress)
     
+    #Dump registers and put into arrays
+
     def coil_status(self):
         number_registers = 6
         i = 0
@@ -78,9 +80,7 @@ class HeruFTX( minimalmodbus.Instrument ):
                 l = self.read_registers(0, number_registers, functioncode=3)
             except:
                 pass
-        # l.append(self.read_string(40401, functioncode=3))
-        # ...
-        # l.append(self.read_string(40528), functioncode=3)
+
         self.write_register(999, 1991)
         number_registers = 3
         s = None
@@ -101,9 +101,11 @@ if __name__ == '__main__':
     
     a.debug = False
     a.precalculate_read_size = False
+    
     print "---------------"
     print "| Coil Status |"
     print "---------------"
+    
     minimalmodbus._print_out('{:40}{:20}{}'.format('Register name', 'Value', 'Description\n'))
     l = a.coil_status()
     description = ['  ','  ','  ','  ','Write 1 to clear alarm, reads always 0','Write 1 to reset filter timer, reads always 0',]
@@ -115,16 +117,11 @@ if __name__ == '__main__':
     print "----------------"
     print "| Input Status |"
     print "----------------"
+    
     minimalmodbus._print_out('{:40}{:20}{}'.format('Register name', 'Value', 'Description\n'))
     l = a.input_status()
     description = ['  ','  ','  ','  ','  ','  ','Readable, value has no meaning','  ','  ','  ','Readable, value has no meaning','Readable, value has no meaning','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','Supply fan stopped.','No heating or cooling allowed.','  ','  ','  ','  ','  ',]
     text = ['Fire alarm switch','Boost switch','Overpressure switch','Aux switch','Fire alarm','Rotor alarm','RFU','Freeze alarm','Low supply alarm','Low rotor temperature alarm','RFU','RFU','Temp. sensor open circuit alarm','Temp. sensor short circuit alarm','Pulser alarm','Supply fan alarm','Exhaust fan alarm','Supply filter alarm','Exhaust filter alarm','Filter timer alarm','Freeze protection B level','Freeze protection A level','Startup 1st phase','Startup 2nd phase','Heating','Recovering heat/cold','Cooling','CO2 boost','RH boost']
-
-    # for i in text:
-    #     minimalmodbus._print_out('{0}\t{1}'.format(i,l[text.index(i)]))
-
-    # for c1, c2 in zip(text, l):
-    #     print "%-50s %s" % (c1, c2)
 
     for line in zip(text, l, description):
         minimalmodbus._print_out('{:40}{:20}{}'.format(*line))
@@ -132,11 +129,13 @@ if __name__ == '__main__':
     print "------------------"
     print "| Input Register |"
     print "------------------"
+    
     minimalmodbus._print_out('{:40}{:20}{}'.format('Register name', 'Value', 'Description\n'))
     l = a.input_register()
     description = ['Always 10','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','Number of days to filter change.','0 = none, 1-5 = program 1-5','0 = Off, 1 = Min, 2 = Std, 3 = Mod, 4 = Max.','0 = Off, 1 = Min, 2 = Std, 3 = Mod, 4 = Max','0 = Off, 1 = Min, 2 = Std, 3 = Mod, 4 = Max','  ','  ','  ','  ','In range 0-255','In range 0-255','In range 0-255','  ','  ']
     unit = ['  ','°C','°C','°C','°C','°C','°C','°C','  ','  ','  ',' Pa',' Pa',' RH',' CO2','  ','  ','  ','  ',' days','  ','  ','  ','  ','%','%',' rpm',' rpm','  ','  ','  ',' x 0.1V',' x 0.1V']
     text = ['Component ID','Outdoor temperature','Supply air temperature','Exhaust air temperature','Waste air temperature','Water temperature','Heat Recovery Wheel temperature','Room temperature','RFU','RFU','RFU','Supply pressure','Exhaust pressure','Relative humidity','Carbon dioxide','RFU','RFU','Sensors open','Sensors shorted','Filter days left','Current weektimer program','Current fan speed','Current supply fan step','Current exhaust fan step','Current supply fan power','Current exhaust fan power','Current supply fan speed','Current exhaust fan speed','Current heating power','Current heat/cold recovery power','Current cooling power','Supply fan control voltage','Exhaust fan control voltage',]
+    
     for line in zip(text, l, unit, description):
         if (line[2] == '°C') or (line[2] == ' Pa'):
             line =list(line)
@@ -146,6 +145,7 @@ if __name__ == '__main__':
     print "----------------------------------------------------"
     print "| Holding Register, this one might take a while... |"
     print "----------------------------------------------------"
+    
     minimalmodbus._print_out('{:40}{:20}{}'.format('Register name', 'Value', 'Description\n'))
     l = a.holding_register()
     unit = ['  ','°C','%','%','%','%','%','  ','  ','°C','°C','  ','0.1°C','°C','°C','  ','°C','  ','  ',' x 10 PPM CO2',' min','% points / hour','  ','  ','% points / hour','  ',' min',' min','°C','°C','  ','  ','  ','  ','  ','  ','  ','  ','  ','% points','  ','  ','  ',' months','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','  ','°C','  ','  ','  ','  ','  ','  ','  ','  ','  ','°C','  ','  ','  ','  ','  ','  ','  ','  ','  ','°C','  ','  ','  ','  ','  ','  ','  ','  ','  ','°C','  ','  ','  ','  ','  ','  ','  ','  ','  ','°C','  ','  ',' x 0.1V',' s']
