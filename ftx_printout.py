@@ -155,6 +155,7 @@ if __name__ == '__main__':
     for line in zip(text, l, unit, description):
         minimalmodbus._print_out('{:40}{}{:20}{}'.format(*line))
     
+    
     #minimalmodbus._print_out( 'DONE!' )
 
 pass
