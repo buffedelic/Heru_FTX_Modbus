@@ -1,6 +1,14 @@
-# Heru_FTX_Modbus
+# Heru FTX Modbus
 
-Example output:
+## Description
+
+Used in conjunction with a RPI to monitor Östberg Heru FTX with enabled modbus. Modbus is enabled with a custom remote bought from various Östberg supplyers.
+
+### Requirements
+minimalmodbus
+
+
+### Example output:
 
 ```
 HERU FTX MODBUS REGISTER
