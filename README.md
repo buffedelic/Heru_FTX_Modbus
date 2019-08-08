@@ -5,12 +5,17 @@
 Used in conjunction with a RPI to monitor Östberg Heru FTX with enabled modbus. Modbus is enabled with a custom remote bought from various Östberg supplyers.
 
 ### Requirements
+
 minimalmodbus
 
 ### Usage
-ftx_away_switch *used to put the ventlation system to minimum/vacation mode*
-ftx_printout *will dump entire register to stdout*
-get_ftx_temp *is used with rrdtool, needs editing for your needs*
+
+ftx_away_switch 
+*used to put the ventlation system to minimum/vacation mode*
+ftx_printout 
+*will dump entire register to stdout*
+get_ftx_temp 
+*is used with rrdtool, needs editing for your needs*
 
 ### Example output:
 
