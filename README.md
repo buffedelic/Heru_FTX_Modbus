@@ -1,6 +1,6 @@
 # Heru FTX Modbus
 
-## Description
+### Description
 
 Used in conjunction with a RPI to monitor Östberg Heru FTX with enabled modbus. Modbus is enabled with a custom remote bought from various Östberg supplyers.
 
