@@ -2,6 +2,7 @@
 
 Example output:
 
+```
 ---------------
 | Coil Status |
 ---------------
@@ -36,3 +37,5 @@ Supply fan speed, EC                    48%
 Exhaust fan speed, EC                   70%     
 ..
 ...
+
+```
