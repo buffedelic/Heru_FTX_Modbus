@@ -16,7 +16,7 @@ class HeruFTX( minimalmodbus.Instrument ):
     
     #Dump registers and put into arrays
 
-    def coil_status(self): ##hej 
+    def coil_status(self):
         number_registers = 6
         i = 0
         l = []
