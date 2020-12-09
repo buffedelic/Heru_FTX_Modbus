@@ -5,12 +5,7 @@ import sys
 import rrdtool
 from decimal import *
 
-ior = 0
-
-minimalmodbus.CLOSE_PORT_AFTER_EACH_CALL = True
-minimalmodbus.STOPBITS = 2
-instr = minimalmodbus.Instrument('/dev/ttyUSB0', 4) #port, slaveadress
-#instr.debug = True
+instr = minimalmodbus.Instrument('/dev/ttyUSB0', 1) #port, slaveadress
 instr.precalculate_read_size = False
 
 
@@ -30,14 +25,13 @@ for i in temp:
 	tempDec.append(i)
 
 if len(sys.argv) > 1: #if started with argument just print
-	print "Database not updated, got these values:"
-	print tempDec
-	print ior
-	print "---------------------------------------------------"
+	print("Database not updated, got these values:")
+	print(tempDec)
+	print("---------------------------------------------------")
 else:
-	print "Updating database with:"
+	print("Updating database with:")
 	print tempDec
 	for i in tempDec:
 		ret = rrdtool.update('/home/pi/rrdDB/ftxtemp_db.rrd', 'N:%s:%s:%s:%s:%s:%s:%s' %(tempDec[0], tempDec[1], tempDec[2], tempDec[3], tempDec[4], tempDec[5], tempDec[6]));
 		if ret:
-			print rrdtool.error()
+			print(rrdtool.error())
