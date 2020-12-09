@@ -5,6 +5,8 @@ import sys
 import rrdtool
 from decimal import *
 
+ior = 0
+
 instr = minimalmodbus.Instrument('/dev/ttyUSB0', 1) #port, slaveadress
 instr.precalculate_read_size = False
 
