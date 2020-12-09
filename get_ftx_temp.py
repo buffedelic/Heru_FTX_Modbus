@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import minimalmodbus
 import sys
@@ -32,7 +32,7 @@ if len(sys.argv) > 1: #if started with argument just print
 	print("---------------------------------------------------")
 else:
 	print("Updating database with:")
-	print tempDec
+	print(tempDec)
 	for i in tempDec:
 		ret = rrdtool.update('/home/pi/rrdDB/ftxtemp_db.rrd', 'N:%s:%s:%s:%s:%s:%s:%s' %(tempDec[0], tempDec[1], tempDec[2], tempDec[3], tempDec[4], tempDec[5], tempDec[6]));
 		if ret:
